@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 
 
-public class LocaleResolve implements LocaleResolver {
+public class LocaleResolverComponent implements LocaleResolver {
 
     @Override
     public Locale resolveLocale(HttpServletRequest request) {

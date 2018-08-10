@@ -10,10 +10,10 @@
 
 		<title>Dashboard Template for Bootstrap</title>
 		<!-- Bootstrap core CSS -->
-		<link href="asserts/css/bootstrap.min.css" rel="stylesheet">
+		<link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.css}" rel="stylesheet">
 
 		<!-- Custom styles for this template -->
-		<link href="asserts/css/dashboard.css" rel="stylesheet">
+		<link href="asserts/css/dashboard.css" th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
 		<style type="text/css">
 			/* Chart.js */
 			
@@ -83,14 +83,17 @@
 									<td th:text="${emp.department.departmentName}"></td>
 									<td th:text="${#dates.format(emp.birth,'yyyy-MM-dd HH:mm:ss')}"></td>
 									<td>
-										<button class="btn btn-sm btn-primary">编辑</button>
-										<button class="btn btn-sm btn-danger">删除</button>
+										<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
+										<button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</main>
+				<form id="deleteEmpForm" method="post">
+					<input type="hidden" name="_method" value="delete">
+				</form>
 			</div>
 		</div>
 
@@ -105,6 +108,12 @@
 		<script type="text/javascript" src="asserts/js/feather.min.js"></script>
 		<script>
 			feather.replace()
+		</script>
+		<script>
+			$(".deleteBtn").click(function () {
+			    $("#deleteEmpForm").attr("action",$(this).attr("del_uri")).submit();
+				return false;
+            });
 		</script>
 
 		<!-- Graphs -->

@@ -1,20 +1,23 @@
 package cn.com.yusys.tkbb.controller;
 
+import cn.com.yusys.tkbb.exception.UserNotExistException;
 import cn.com.yusys.tkbb.vo.UserVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
 public class UserController {
+    @ResponseBody
     @RequestMapping("/hello")
-    public String hello(){
-        return "hello111222";
+    public  String hello(@RequestParam("user") String user){
+        if(user.equals("aaa")){
+            throw new UserNotExistException();
+        }
+        return "Hello World";
     }
 
     //@RequestMapping(value = "/login",method = RequestMethod.POST)

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //使用WebMvcConfigurer扩展springmvc的功能
 @Configuration
-public class MvcConfig implements WebMvcConfigurer {
+public class CustomerConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/test").setViewName("success");

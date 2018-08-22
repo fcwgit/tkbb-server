@@ -9,7 +9,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.Map;
 
 //给容器中加入我们自己定义的ErrorAttributes
-@Component
+//@Component
 public class AppErrorAttributes extends DefaultErrorAttributes {
 
     //返回的map就是页面和JSON能获取的所有字段

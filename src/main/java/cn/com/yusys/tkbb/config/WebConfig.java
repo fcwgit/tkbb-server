@@ -11,6 +11,7 @@ import java.util.List;
 import static com.alibaba.fastjson.serializer.SerializerFeature.*;
 
 //https://segmentfault.com/a/1190000014479154
+
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
